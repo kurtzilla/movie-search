@@ -2,7 +2,7 @@
 <html lang="en" ng-app='myApp'>
 <head>
   <meta charset="UTF-8">
-  <title>Zen Data</title>
+  <title>Movie Search</title>
   <!-- styles -->
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
         rel="stylesheet"
@@ -10,7 +10,6 @@
   <link href="./css/main.css"
         rel="stylesheet"
         media="screen">
-
   <base href="/">
 </head>
   <body>
@@ -22,20 +21,25 @@
           <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
           <pre>$route.current.params = {{$route.current.params}}</pre>
           <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-          <pre>$routeParams = {{$routeParams}}</pre>
-          <hr /> -->
+          <pre>$routeParams = {{$routeParams}}</pre> -->
+          <!-- <pre>isHome = {{nav.isHome()}}</pre>
+          <pre>isShow = {{nav.isShow()}}</pre> -->
+          <!-- <hr /> -->
           <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="/">Home</a></li>
+            <li role="presentation"
+                ng-class="{active:nav.isHome()}">
+                  <a href="/">Home</a>
+            </li>
+            <li role="presentation"
+                ng-class="{active:nav.isShow()}">
+                  <a href="/show">Show</a>
+            </li>
           </ul>
         </nav>
       </header>
 
-      <div ng-view></div>
-
-      <footer>
-        <br />
-        <h3>My Footer</h3>
-      </footer>
+      <div ng-view>
+      </div>
 
     </div>
 
@@ -51,11 +55,11 @@
             type="text/javascript"></script>
     <script src="./js/controllers.js"
             type="text/javascript"></script>
-    <script src="./js/directives.js"
+    <!-- <script src="./js/directives.js"
             type="text/javascript"></script>
     <script src="./js/filters.js"
             type="text/javascript"></script>
     <script src="./js/services.js"
-            type="text/javascript"></script>
+            type="text/javascript"></script> -->
   </body>
 </html>

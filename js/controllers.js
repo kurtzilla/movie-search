@@ -1,5 +1,4 @@
 
-
 app.controller('NavController', function($scope, $rootScope, $route, $routeParams, $location) {
 
   $scope.$route = $route;
@@ -7,34 +6,24 @@ app.controller('NavController', function($scope, $rootScope, $route, $routeParam
   $scope.$routeParams = $routeParams;
 
   // get current route info
-  console.log('ROUTE', $scope);
+  // console.log('ROUTE', $scope);
+
+  // console.log('ROUTE CURRENT', $route.current);
+  var _template = (!$route.current) ? 'home' : $route.current.templateUrl.toLowerCase();
+  // console.log('TEMPLATE', _template);
+  $scope.nav = {};
+
+  $scope.nav.isHome = function(){return $route.current &&
+    $route.current.templateUrl.toLowerCase().indexOf('home') !== -1};
+  $scope.nav.isShow = function(){return $route.current &&
+    $route.current.templateUrl.toLowerCase().indexOf('show') !== -1};
+    
 });
 
 app.controller('HomeController', function($scope, $http) {
   $scope.view = {};
+});
 
-  // $http.get('https://api.github.com/zen').then(function(data){
-  //   $scope.view.zenData = data.data;
-  // });
-  //
-  //
-  // $http.get('/itunes.json').then(function(data){
-  //   console.log(data);
-  //   $scope.view.jack = data.data.results;
-  // })
-  // .catch(function(err){
-  //   $scope.view.jack = err;
-  // });
-
-  $http.get('https://messagehttpservice.herokuapp.com/messages')
-  .then(function(data){
-    $scope.view.msgData = data;
-  })
-  .catch(function(err){
-    $scope.view.msgData = err;
-  });
-
-
-
-
+app.controller('ShowController', function($scope, $http) {
+  $scope.view = {};
 });
